@@ -1,0 +1,22 @@
+/* Apply the background image to the entire body */
+body{
+    background-image: url('/images/unsplash212.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the body takes up the full viewport height */
+    margin: 0; /* Removes default margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color */
+    font-family: Arial, sans-serif;
+}
+
+/* Optional: Add a semi-transparent overlay for better text readability */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
