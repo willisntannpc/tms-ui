@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <h2>Create a New Task</h2>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}<br>
+        </div>
+        <div>
+            {{ form.content.label }}<br>
+            {{ form.content(rows=5) }}<br>
+        </div>
+        <div>
+            {{ form.status.label }}<br>
+            {{ form.status() }}<br>
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }} - {{ task.content }} - {{ task.status }}
+                <a href="{{ url_for('update_task', task_id=task.id) }}">Edit</a>
+                <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}" style="display:inline;">
+                    {{ form.hidden_tag() }}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
